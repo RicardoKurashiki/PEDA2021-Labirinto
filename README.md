@@ -1,4 +1,4 @@
-# Labirinto
+# PROJETO LABIRINTO || PUCPR || 2021
 ## Introdução
 Este trabalho foi realizado pelo aluno Ricardo Godoi Kurashiki, do curso de Engenharia de Computação da Pontifícia Universidade Católica do Paraná. A premissa principal deste
 trabalho é formular um algoritmo de solução de labirintos, utilizando os princípios de pilhas para a solução.
