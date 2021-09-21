@@ -10,22 +10,39 @@ Offset::Offset(int start_x, int start_y)
 	y = start_y;
 }
 
-void Offset::moveUp(int blocks)
+void Offset::move(char direction)
 {
-	x -= blocks;
+	switch (direction)
+	{
+	case 'N':
+		--x;
+		path_x.push(x);
+		path_y.push(y);
+		break;
+	case 'S':
+		++x;
+		path_x.push(x);
+		path_y.push(y);
+		break;
+	case 'W':
+		--y;
+		path_x.push(x);
+		path_y.push(y);
+		break;
+	case 'E':
+		++y;
+		path_x.push(x);
+		path_y.push(y);
+		break;
+	default:
+		break;
+	}
 }
 
-void Offset::moveDown(int blocks)
+void Offset::undo()
 {
-	x += blocks;
-}
-
-void Offset::moveLeft(int blocks)
-{
-	y -= blocks;
-}
-
-void Offset::moveRight(int blocks)
-{
-	y += blocks;
+	x = path_x.topo();
+	y = path_y.topo();
+	path_x.pop();
+	path_y.pop();
 }
