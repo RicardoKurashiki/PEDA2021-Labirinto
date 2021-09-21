@@ -8,8 +8,14 @@ using namespace std;
 
 bool isValid(char position) { return (position == ' ' || position == 'S'); }
 
+bool isFinished(char position) { return (position == 'S'); }
+
 int main()
 {
+	cout << "--- LABIRINTO ---" << endl;
+	cout << "PEDA - PUCPR" << endl;
+	cout << "Ricardo Godoi Kurashiki" << endl;
+
 	Offset coords;
 
 	vector<string> labirinto = {
@@ -65,7 +71,12 @@ int main()
 		for (int x = 0; x < labirinto[y].size() - 1; ++x)
 		{
 			if (labirinto[x][y] == 'E')
+			{
 				coords = Offset(x, y);
+				labirinto[coords.getX()][coords.getY()] = '*';
+				labirinto_layout[coords.getX()][coords.getY()] = '*';
+				cout << "Entrada: (" << coords.getX() << ", " << coords.getY() << ")" << endl << endl;
+			}
 		}
 	}
 
@@ -74,11 +85,18 @@ int main()
 	bool isSearching = true;
 
 	while (isSearching)
-	// for (int i = 0; i < 20; ++i)
 	{
 		// CIMA
 		if (isValid(labirinto[coords.getX() - 1][coords.getY()]))
 		{
+			if (isFinished(labirinto[coords.getX() - 1][coords.getY()]))
+			{
+				isSearching = false;
+				coords.move('N');
+				labirinto[coords.getX()][coords.getY()] = '*';
+				labirinto_layout[coords.getX()][coords.getY()] = '*';
+				break;
+			}
 			coords.move('N');
 			labirinto[coords.getX()][coords.getY()] = '*';
 			labirinto_layout[coords.getX()][coords.getY()] = '*';
@@ -86,6 +104,14 @@ int main()
 		// BAIXO
 		else if (isValid(labirinto[coords.getX() + 1][coords.getY()]))
 		{
+			if (isFinished(labirinto[coords.getX() + 1][coords.getY()]))
+			{
+				isSearching = false;
+				coords.move('S');
+				labirinto[coords.getX()][coords.getY()] = '*';
+				labirinto_layout[coords.getX()][coords.getY()] = '*';
+				break;
+			}
 			coords.move('S');
 			labirinto[coords.getX()][coords.getY()] = '*';
 			labirinto_layout[coords.getX()][coords.getY()] = '*';
@@ -93,6 +119,14 @@ int main()
 		// DIREITA
 		else if (isValid(labirinto[coords.getX()][coords.getY() + 1]))
 		{
+			if (isFinished(labirinto[coords.getX()][coords.getY() + 1]))
+			{
+				isSearching = false;
+				coords.move('E');
+				labirinto[coords.getX()][coords.getY()] = '*';
+				labirinto_layout[coords.getX()][coords.getY()] = '*';
+				break;
+			}
 			coords.move('E');
 			labirinto[coords.getX()][coords.getY()] = '*';
 			labirinto_layout[coords.getX()][coords.getY()] = '*';
@@ -100,22 +134,29 @@ int main()
 		// ESQUERDA
 		else if (isValid(labirinto[coords.getX()][coords.getY() - 1]))
 		{
+			if (isFinished(labirinto[coords.getX()][coords.getY() - 1]))
+			{
+				isSearching = false;
+				coords.move('W');
+				labirinto[coords.getX()][coords.getY()] = '*';
+				labirinto_layout[coords.getX()][coords.getY()] = '*';
+				break;
+			}
 			coords.move('W');
 			labirinto[coords.getX()][coords.getY()] = '*';
 			labirinto_layout[coords.getX()][coords.getY()] = '*';
-		}
-		else if (labirinto[coords.getX()][coords.getY()] == 'S')
-		{
-			isSearching = false;
 		}
 		else
 		{
 			labirinto_layout[coords.getX()][coords.getY()] = ' ';
 			coords.undo();
 		}
-		for (int i = 0; i < labirinto_layout.size(); ++i) cout << labirinto_layout[i] << endl;
-		cout << endl;
+		// Descomentar codigo abaixo para ver o algoritmo
+		// for (int i = 0; i < labirinto_layout.size(); ++i) cout << labirinto_layout[i] << endl;
+		// cout << endl;
 	}
 
-
+	cout << "Resultado do programa:" << endl << endl;
+	for (int i = 0; i < labirinto_layout.size(); ++i) cout << labirinto_layout[i] << endl;
+	cout << endl << "Saida: (" << coords.getX() << ", " << coords.getY() << ")" << endl;
 }
