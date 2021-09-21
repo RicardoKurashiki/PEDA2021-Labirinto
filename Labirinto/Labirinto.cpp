@@ -7,16 +7,52 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello World!\n";
+	Pilha path_x;
+	Pilha path_y;
+	Offset direction;
+
+	vector<string> labirinto = {
+		"XXXXXXXXXXXXXXXXXXXXX",
+		"X     X     X     X X",
+		"XX XX XXXXX X X X   X",
+		"X   X       XXX XXX X",
+		"X X X XXXXXXX   X   X",
+		"X X   X   X X X   X X",
+		"X XXXXX X X   XXXXX X",
+		"X X     X XXX  X    X",
+		"X X X X X   XX XX XXX",
+		"X X XXX X X     X   X",
+		"E X X X X XXXXX XXX X",
+		"X     X X   X X X   X",
+		"X XXXXX XXX X XXX X X",
+		"X X       X X   X X X",
+		"X   XXX X X XXX X X X",
+		"XXX X X X X X X X XXX",
+		"X X   X X   X   X   X",
+		"X XXX XXXXXXXXX XXX X",
+		"X                 X X",
+		"XXXXXXXXXXXXXXXXXXXSX"
+	};
+
+	// procurando ponto inicial
+	// snake = Offset(10, 0);
+	for (int y = 0; y < 21; ++y)
+	{
+		for (int x = 0; x < 20; ++x)
+		{
+			if (labirinto[x][y] == 'E')
+				direction = Offset(x, y);
+		}
+	}
+
+	// programa principal
+	bool isSearching = true;
+	int current_x = direction.getX(), current_y = direction.getY();
+
+	while (isSearching)
+	{
+		if (current_x == 0) isSearching = false;
+		cout << "ABC" << endl;
+		--current_x;
+	}
 }
-
-// Executar programa: Ctrl + F5 ou Menu Depurar > Iniciar Sem Depuração
-// Depurar programa: F5 ou menu Depurar > Iniciar Depuração
-
-// Dicas para Começar: 
-//   1. Use a janela do Gerenciador de Soluções para adicionar/gerenciar arquivos
-//   2. Use a janela do Team Explorer para conectar-se ao controle do código-fonte
-//   3. Use a janela de Saída para ver mensagens de saída do build e outras mensagens
-//   4. Use a janela Lista de Erros para exibir erros
-//   5. Ir Para o Projeto > Adicionar Novo Item para criar novos arquivos de código, ou Projeto > Adicionar Item Existente para adicionar arquivos de código existentes ao projeto
-//   6. No futuro, para abrir este projeto novamente, vá para Arquivo > Abrir > Projeto e selecione o arquivo. sln

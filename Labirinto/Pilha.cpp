@@ -2,6 +2,8 @@
 #include <string>
 #include "Pilha.h"
 
+using namespace std;
+
 Pilha::Pilha()
 {
 	topo_ = -1;
@@ -29,7 +31,7 @@ void Pilha::push(TipoDado x)
 	}
 	else
 	{
-		std::cerr << "Pilha esta cheia!" << std::endl;
+		cerr << "Pilha esta cheia!" << endl;
 	}
 }
 
@@ -43,7 +45,8 @@ TipoDado Pilha::topo()
 	}
 	else
 	{
-		std::cerr << "Pilha esta vazia!" << std::endl;
+		cerr << "Pilha vazia!" << endl;
+		return -1;
 	}
 }
 
@@ -57,6 +60,6 @@ void Pilha::pop()
 	}
 	else
 	{
-		std::cerr << "Pilha esta vazia!" << std::endl;
+		cerr << "Pilha esta vazia!" << endl;
 	}
 }

@@ -7,6 +7,8 @@ class Offset {
 public:
 	Offset();
 	Offset(int start_x, int start_y);
+	int getX() { return x; }
+	int getY() { return y; }
 	void moveUp(int blocks);
 	void moveDown(int blocks);
 	void moveLeft(int blocks);

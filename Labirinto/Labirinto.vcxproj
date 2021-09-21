@@ -140,6 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Labirinto.cpp" />
+    <ClCompile Include="Offset.cpp" />
+    <ClCompile Include="Pilha.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Offset.h" />
+    <ClInclude Include="Pilha.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

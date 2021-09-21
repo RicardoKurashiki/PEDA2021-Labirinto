@@ -1,9 +1,10 @@
 #include <array>
+#include "Offset.h"
 
 #ifndef PILHA_H
 #define PILHA_H
 
-constexpr int MAXPILHA = 10;
+constexpr int MAXPILHA = 100;
 
 using TipoDado = int;
 
